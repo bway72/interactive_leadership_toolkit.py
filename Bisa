@@ -1,0 +1,84 @@
+import streamlit as st
+
+# Set up page title and description
+st.title("Interactive Leadership Toolkit")
+st.write("Welcome to your Leadership Toolkit, designed to help new team leaders, supervisors, and aspiring leaders build essential skills.")
+
+# Navigation menu
+menu = ["Home", "Leadership Basics", "Communication", "Conflict Resolution", "Team Management", "Resources"]
+choice = st.sidebar.selectbox("Navigate the Toolkit", menu)
+
+# Content for each section
+if choice == "Home":
+    st.header("Welcome!")
+    st.write("This toolkit provides practical tools, templates, and interactive exercises to support your leadership journey. Choose a section from the menu to get started.")
+
+elif choice == "Leadership Basics":
+    st.header("Leadership Basics")
+    st.write("Learn the fundamentals of leadership, including roles, responsibilities, and styles.")
+
+    # Interactive leadership style quiz
+    st.subheader("What's Your Leadership Style?")
+    q1 = st.radio("When managing a team, you prioritize:", ["Building strong relationships", "Achieving results", "Fostering creativity", "Maintaining structure"])
+    q2 = st.radio("In a conflict, you tend to:", ["Seek compromise", "Take charge", "Encourage open dialogue", "Stick to policies"])
+
+    if st.button("Get My Style"):
+        if q1 == "Building strong relationships" and q2 == "Seek compromise":
+            st.write("**Your Leadership Style:** Collaborative")
+            st.write("You focus on building strong relationships and finding win-win solutions.")
+        elif q1 == "Achieving results" and q2 == "Take charge":
+            st.write("**Your Leadership Style:** Directive")
+            st.write("You are results-driven and take decisive actions to lead your team.")
+        else:
+            st.write("**Your Leadership Style:** Flexible")
+            st.write("You adapt your style based on the needs of your team and situation.")
+
+elif choice == "Communication":
+    st.header("Communication")
+    st.write("Master the art of clear, effective communication with your team.")
+
+    st.subheader("Interactive Exercise: Giving Constructive Feedback")
+    feedback_example = st.text_area("Write how you would provide feedback to a team member who missed a deadline:")
+
+    if st.button("Submit Feedback"):
+        st.write("**Your Feedback:**")
+        st.write(feedback_example)
+        st.write("Tip: Ensure your feedback is specific, actionable, and empathetic.")
+
+elif choice == "Conflict Resolution":
+    st.header("Conflict Resolution")
+    st.write("Learn how to mediate conflicts and foster collaboration.")
+
+    st.subheader("Scenario: Resolving a Team Dispute")
+    st.write("Imagine two team members are in a disagreement about project responsibilities.")
+    resolution_action = st.radio("What would you do first?", [
+        "Listen to both sides separately",
+        "Bring both team members together for a discussion",
+        "Consult with your manager",
+        "Ignore it and see if it resolves on its own"
+    ])
+
+    if st.button("See Recommendation"):
+        if resolution_action == "Listen to both sides separately":
+            st.write("Good start! Listening helps you understand the root cause before taking action.")
+        elif resolution_action == "Bring both team members together for a discussion":
+            st.write("Effective! A mediated discussion can help both parties find common ground.")
+        else:
+            st.write("Consider addressing the issue proactively to prevent escalation.")
+
+elif choice == "Team Management":
+    st.header("Team Management")
+    st.write("Learn to motivate, delegate, and manage your team effectively.")
+
+    st.subheader("Downloadable Templates")
+    st.write("- [One-on-One Meeting Agenda Template](#)")
+    st.write("- [Task Delegation Checklist](#)")
+    st.write("- [Team Goal-Setting Worksheet](#)")
+
+elif choice == "Resources":
+    st.header("Resources")
+    st.write("Explore additional tools and references for your leadership journey.")
+
+    st.write("- [Emotional Intelligence Guide](#)")
+    st.write("- [Leadership Development Videos](#)")
+    st.write("- [Conflict Resolution Strategies](#)")
